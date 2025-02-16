@@ -8,7 +8,6 @@
       :style="{ backgroundColor: glassBg }"
       @click="toggleExpand"
     >
-      <!-- Parent Group Header -->
       <section 
         class="relative flex items-center justify-between w-full min-h-22 text-gray-600 cursor-pointer"
       >
@@ -39,7 +38,7 @@
       </section>
     </div>
     
-    <!-- Subgroups (Stacked Behind Main Card) -->
+    <!-- Subgroups -->
     <transition-group
       name="stacked-expand"
       tag="div"
