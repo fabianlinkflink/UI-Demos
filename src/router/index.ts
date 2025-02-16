@@ -1,21 +1,25 @@
-import { createRouter, createWebHistory, RouteRecordRaw, } from "vue-router"
+import { createRouter, createWebHistory } from 'vue-router'
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: "/",
-    name: "Example",
-    component: () => import("../modules/example/pages/Example.vue")
-  },
-  {
-    path: "/about",
-    name: "About",
-    component: () => import("../modules/example/pages/About.vue")
-  }
-]
+import App from '@/views/App.vue'
+import cards from '@/views/cards.vue'
 
+/**
+ * The router instance for the application.
+ */
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'App',
+      component: App,
+    },
+    {
+      path: '/cards',
+      name: 'Cards',
+      component: cards,
+    },
+  ],
 })
 
 export default router
