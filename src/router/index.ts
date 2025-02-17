@@ -1,12 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import landing from '@/views/App.vue'
+import landing from '@/views/landing.vue'
 import cards from '@/views/cards.vue'
-import sidebar from '@/views/SideBar.vue' // import Sidebar view
+import sidebar from '@/views/SideBar.vue'
 
-/**
- * The router instance for the application.
- */
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -23,7 +20,7 @@ const router = createRouter({
     {
       path: '/sidebar',
       name: 'Sidebar',
-      component: sidebar, // add route for Sidebar
+      component: sidebar,
     },
   ],
 })

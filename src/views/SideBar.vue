@@ -1,5 +1,5 @@
 <template>
   <div>
-    HÄR SKA 3D bilden vara
+    Coming soon
   </div>
 </template>
