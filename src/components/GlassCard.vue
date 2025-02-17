@@ -46,7 +46,7 @@
       class="relative"
       :style="{
         position: 'relative', 
-        height: isExpanded ? auto : 0, 
+        height: isExpanded ? 'auto' : 0, 
         overflow: 'visible'
       }"
     >
