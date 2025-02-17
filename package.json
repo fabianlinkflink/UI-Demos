@@ -1,5 +1,6 @@
 {
-  "name": "my-vue-app",
+  "name": "ui-demos",
+  "homepage": "https://fabianlinkflink.github.io/UI-Demos",
   "private": true,
   "version": "0.0.0",
   "type": "module",
