@@ -18,9 +18,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const _props = defineProps<{
-  groups?: object
-}>()
 
 // Randomize percentage mapped on component initialization
 const percentMapped = ref(parseFloat((Math.random() * 100).toFixed(1)))
