@@ -43,6 +43,7 @@
     
     <!-- Expand/Collapse Icon (placed outside the card) -->
     <div 
+      v-if="props.subgroups.length"
       class="text-center cursor-pointer text-xl -mt-2"
       @click="toggleExpand"
       :style="{ color: rgbToHex(props.bgColor) }"
@@ -55,6 +56,7 @@
       <div v-if="isExpanded" class="w-full">
         <ColorfulCard
           v-for="(subgroup, index) in subgroups"
+          class="pt-4"
           :key="index"
           :groupName="subgroup.groupName"
           :leftTitle="subgroup.leftTitle"

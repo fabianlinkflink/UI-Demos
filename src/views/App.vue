@@ -7,23 +7,23 @@ const toggleBackground = () => {
 }
 </script>
 
-<template> 
-  <div :class="[ isAltBackground ? 'alt-bg' : 'default-bg', 'min-h-screen', 'flex', 'flex-col', 'justify-center', 'items-center' ]">
-    <!-- Toggle Background Button -->
-    <button @click="toggleBackground" class="mb-4 px-4 py-2 bg-gray-900 text-white rounded hover:scale-105">
-      Toggle Background
-    </button>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-    <router-link to="/cards">
-      <button class="navigate-button mb-4 px-4 py-2 bg-gray-900 text-white rounded hover:scale-105">Go to Cards Page</button>
-    </router-link>
-    <!-- Centered Routed Components -->
-    <router-view />
+<template>
+  <div :class="[ isAltBackground ? 'alt-bg' : 'default-bg', 'min-h-screen min-w-screen' ]">
+    <nav class="flex justify-around items-center bg-gray-800 text-white shadow-lg">
+      <router-link to="/cards" class="px-4 py-2 hover:bg-gray-700 rounded">
+        Cards
+      </router-link>
+      <router-link to="/sidebar" class="px-4 py-2 hover:bg-gray-700 rounded">
+        Sidebar
+      </router-link>
+      <button @click="toggleBackground" class="px-4 py-2 hover:bg-gray-700 rounded">
+        Toggle Background
+      </button>
+    </nav>
+    <!-- Routed content displayed below the navbar -->
+    <div class="p-4">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -42,7 +42,7 @@ const toggleBackground = () => {
 }
 /* Background style for default view */
 .default-bg {
-  background-color: #ffffff;
+  background-color: #859ebc;
   background-image: radial-gradient(rgba(12,12,12,0.171) 2px, transparent 0);
   background-size: 30px 30px;
   background-position: -5px -5px;

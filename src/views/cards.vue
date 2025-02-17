@@ -7,7 +7,7 @@ import MappingBar from '../components/MappingBar.vue';
 
 <template>
   <div class="max-w-100">
-    <div class="pt-10">
+    <div class="pt-4">
       <ColorfulCard
         groupName="Group"
         leftTitle="Left Title"
@@ -26,7 +26,7 @@ import MappingBar from '../components/MappingBar.vue';
       </ColorfulCard>
     </div>
 
-    <div class="pt-10">
+    <div class="pt-4">
       <GlassCard
         groupName="Group"
         leftTitle="Left Title"

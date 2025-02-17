@@ -1,9 +1,8 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
   <div>
-    Landing pick your ui elements
+    Pick your poison
   </div>
 </template>

@@ -3,7 +3,8 @@
     <!-- Main Card -->
     <div 
       class="flex flex-col items-center min-w-72 w-full rounded-xl overflow-hidden
-             bg-clip-padding backdrop-filter backdrop-blur-sm shadow-sm hover:backdrop-blur-md hover:shadow-lg
+             bg-clip-padding backdrop-filter backdrop-blur-sm shadow-sm 
+             hover:backdrop-blur-md hover:shadow-lg hover:scale-105
              transition delay-150 duration-600 ease-in-out"
       :style="{ backgroundColor: glassBg }"
       @click="toggleExpand"
