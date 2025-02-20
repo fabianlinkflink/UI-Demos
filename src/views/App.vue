@@ -50,8 +50,8 @@ const toggleBackground = () => {
 }
 /* Alternative background style */
 .alt-bg {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   --s: 100px; /* control the size */
   --c1: #f8b195;
   --c2: #355c7d;
