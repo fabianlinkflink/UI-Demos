@@ -23,7 +23,7 @@
         }"
         class="px-3 py-1 rounded"
       >
-        ColorfulCard
+        DepthCard
       </button>
       <button
         @click="cardType = 'Flat'"
@@ -57,7 +57,7 @@
           :rightTitle="card.rightTitle"
           :rightInfo="card.rightInfo"
           :bgColor="card.bgColor"
-          :subgroups="card.subCard"
+          :subgroup="card.subgroup"
           class="mb-4"
         />
         <ColorfulCard
@@ -68,10 +68,9 @@
           :rightTitle="card.rightTitle"
           :rightInfo="card.rightInfo"
           :bgColor="card.bgColor"
-          :subgroups="card.subCard"
+          :subgroup="card.subgroup"
           class="mb-4"
         />
-        <!-- Flatcard example (uncomment when ready)
         <Flatcard
           v-else-if="cardType === 'Flat'"
           :groupName="card.groupName"
@@ -80,13 +79,10 @@
           :rightTitle="card.rightTitle"
           :rightInfo="card.rightInfo"
           :bgColor="card.bgColor"
-          :subgroups="card.subCard"
-          class="mb-4"
+          :subgroup="card.subgroup"
         />
-        -->
       </template>
   </div>
-    <!-- Right-side slideout (using SlideoutPanel component) -->
     <transition name="slide">
       <component v-if="showSlideout" :is="currentSlideout" @slideOutToggle="toggleSlideout"/>
     </transition>
@@ -97,7 +93,7 @@
 import { computed, ref } from 'vue';
 import GlassCard from '@/components/GlassCard.vue';
 import ColorfulCard from '@/components/ColorfulCard.vue';
-// import Flatcard from '@/components/Flatcard.vue';
+import Flatcard from '@/components/Flatcard.vue';
 import SlideoutPanelGlass from '@/components/SlideoutPanelGlass.vue';
 import SlideoutPanelColorful from '@/components/SlideoutPanelColorful.vue';
 import groupData from '@/data/groupData';
@@ -109,28 +105,24 @@ interface Card {
   rightTitle: string;
   rightInfo: string;
   bgColor: string;
-  subCard: Card[];
+  subgroup: Card[];
 }
 
 const cards: Card[] = [];
-groupData.forEach((group) => {
-  cards.push({
+function mapGroup(group: any): Card {
+  return {
     groupName: group.name,
     leftTitle: 'Material',
     leftInfo: 'Mixed',
     rightTitle: 'Included',
     rightInfo: 'Yes',
     bgColor: group.color ? group.color : 'bg-gray-800',
-    subCard: group.children.map((child: any) => ({
-      groupName: child.name,
-      leftTitle: 'Material',
-      leftInfo: 'Mixed',
-      rightTitle: 'Included',
-      rightInfo: 'Yes',
-      bgColor: child.color ? child.color : 'bg-gray-800',
-      subCard: []
-    }))
-  });
+    subgroup: group.children ? group.children.map(mapGroup) : []
+  }
+}
+
+groupData.forEach((group: any) => {
+  cards.push(mapGroup(group));
 });
 
 const cardType = ref('Glass');

@@ -2,7 +2,7 @@
   <div class="group relative hover:scale-105 transition delay-150 duration-300 ease-in-out">
     <!-- Main Card -->
     <div 
-      class="flex flex-col items-center min-w-72 w-full rounded-xl overflow-hidden shadow-lg border-2 
+      class="flex flex-col items-center min-w-72 w-full rounded-md overflow-hidden shadow-lg border-2 
         transition delay-150 duration-300 ease-in-out group-hover:shadow-xl"
       :style="{ borderColor: rgbToHex(props.bgColor) }"
       @click="toggleExpand"
@@ -43,7 +43,7 @@
     
     <!-- Expand/Collapse Icon (placed outside the card) -->
     <div 
-      v-if="props.subgroups.length"
+      v-if="props.subgroup.length"
       class="text-center cursor-pointer text-xl -mt-2"
       @click="toggleExpand"
       :style="{ color: rgbToHex(props.bgColor) }"
@@ -52,10 +52,10 @@
     </div>
     
     <!-- Subgroups (Expandable) -->
-    <transition name="expand" class="scale-90">
+    <transition name="expand" class="scale-90 origin-top mt-2">
       <div v-if="isExpanded" class="w-full">
         <ColorfulCard
-          v-for="(subgroup, index) in subgroups"
+          v-for="(subgroup, index) in subgroup"
           class="pt-4"
           :key="index"
           :groupName="subgroup.groupName"
@@ -64,7 +64,7 @@
           :rightTitle="subgroup.rightTitle"
           :rightInfo="subgroup.rightInfo"
           :bgColor="subColor"
-          :subgroups="[]"
+          :subgroup="subgroup.subgroup? subgroup.subgroup : []"
         />
       </div>
     </transition>
@@ -82,6 +82,7 @@ interface Group {
   rightTitle: string;
   rightInfo: string;
   bgColor: string;
+  subgroup?: Group[]
 }
 
 const props = defineProps<{
@@ -91,7 +92,7 @@ const props = defineProps<{
   rightTitle: string;
   rightInfo: string;
   bgColor: string;
-  subgroups: Group[];
+  subgroup: Group[];
 }>();
 
 const isExpanded = ref(false);

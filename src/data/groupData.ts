@@ -27,8 +27,7 @@ export const nestedGroups: NestedGroup[] = [
                         id: 'grandchild1',
                         name: 'Room 101',
                         objects: [dummyGeo4],
-                        children: [],
-                        color: '#ff0000'
+                        children: []
                     },
                     {
                         id: 'grandchild2',
@@ -69,8 +68,7 @@ export const nestedGroups: NestedGroup[] = [
                         id: 'grandchild4',
                         name: 'Lobby',
                         objects: [dummyGeo10],
-                        children: [],
-                        color: '#0000ff'
+                        children: []
                     }
                 ]
             }

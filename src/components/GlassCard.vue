@@ -51,7 +51,7 @@
       }"
     >
       <div
-        v-for="(subgroup, index) in props.subgroups"
+        v-for="(subgroup, index) in props.subgroup"
         :key="index"
         class="transition delay-150 duration-300 ease-in-out"
         :style="{
@@ -62,7 +62,7 @@
           position: 'relative'
         }"
       >
-        <div :class="{ 'custom-bounce': index === props.subgroups.length - 1 && !isExpanded }">
+        <div :class="{ 'custom-bounce': index === props.subgroup.length - 1 && !isExpanded }">
           <GlassCard
             :groupName="subgroup.groupName"
             :leftTitle="subgroup.leftTitle"
@@ -70,7 +70,7 @@
             :rightTitle="subgroup.rightTitle"
             :rightInfo="subgroup.rightInfo"
             :bgColor="subColor"
-            :subgroups="[]"
+            :subgroup="subgroup.subgroup? subgroup.subgroup : []"
             :style="{ transform: 'scale(0.95)' }"
           />
         </div>
@@ -90,6 +90,7 @@ interface Group {
   rightTitle: string;
   rightInfo: string;
   bgColor: string;
+  subgroup?: Group[]
 }
 
 const props = defineProps<{
@@ -99,7 +100,7 @@ const props = defineProps<{
   rightTitle: string;
   rightInfo: string;
   bgColor: string;
-  subgroups: Group[];
+  subgroup: Group[];
 }>();
 
 const isExpanded = ref(false);
