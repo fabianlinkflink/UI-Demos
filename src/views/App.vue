@@ -8,8 +8,8 @@ const toggleBackground = () => {
 </script>
 
 <template>
-  <div :class="[ isAltBackground ? 'alt-bg' : 'default-bg', 'min-h-screen min-w-screen' ]">
-    <nav class="flex justify-around items-center bg-gray-800 text-white shadow-lg">
+  <div :class="[isAltBackground ? 'alt-bg' : 'default-bg', 'overflow-hidden h-screen w-screen']">
+    <nav class="flex justify-around items-center bg-gray-800 text-white shadow-lg h-16">
       <router-link to="/cards" class="px-4 py-2 hover:bg-gray-700 rounded">
         Cards
       </router-link>
@@ -20,8 +20,8 @@ const toggleBackground = () => {
         Toggle Background
       </button>
     </nav>
-    <!-- Routed content displayed below the navbar -->
-    <div class="p-4">
+    <!-- Routed content with fixed height (no global scroll) -->
+    <div class="overflow-hidden" style="height: calc(100vh - 4rem);">
       <router-view />
     </div>
   </div>
@@ -42,7 +42,7 @@ const toggleBackground = () => {
 }
 /* Background style for default view */
 .default-bg {
-  background-color: #859ebc;
+  background-color: #e4ecec;
   background-image: radial-gradient(rgba(12,12,12,0.171) 2px, transparent 0);
   background-size: 30px 30px;
   background-position: -5px -5px;

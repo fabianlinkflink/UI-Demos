@@ -15,7 +15,8 @@ export const nestedGroups: NestedGroup[] = [
         id: 'root1',
         name: 'Building A',
         objects: [dummyGeo1, dummyGeo2],
-        color: '#00ff00',
+        // Assigned color from the provided list:
+        color: 'rgb(153,128,119)',
         children: [
             {
                 id: 'child1',
@@ -56,6 +57,8 @@ export const nestedGroups: NestedGroup[] = [
         id: 'root2',
         name: 'Building B',
         objects: [dummyGeo8],
+        // Assigned color from the provided list:
+        color: 'rgb(194,207,179)',
         children: [
             {
                 id: 'child3',
