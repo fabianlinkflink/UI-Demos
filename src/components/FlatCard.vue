@@ -58,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed, ref } from 'vue';
+import { defineProps, ref } from 'vue';
 
 interface Group {
   groupName: string;
