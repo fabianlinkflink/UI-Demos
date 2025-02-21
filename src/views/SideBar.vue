@@ -93,9 +93,10 @@
 import { computed, ref } from 'vue';
 import GlassCard from '@/components/GlassCard.vue';
 import ColorfulCard from '@/components/ColorfulCard.vue';
-import Flatcard from '@/components/Flatcard.vue';
+import Flatcard from '@/components/FlatCard.vue';
 import SlideoutPanelGlass from '@/components/SlideoutPanelGlass.vue';
 import SlideoutPanelColorful from '@/components/SlideoutPanelColorful.vue';
+import SlideoutPanelFlat from '@/components/SlideoutPanelFlat.vue';
 import groupData from '@/data/groupData';
 
 interface Card {
@@ -132,6 +133,8 @@ const showSlideout = ref(false);
 const currentSlideout = computed(() => {
   if (cardType.value === 'Colorful') {
     return SlideoutPanelColorful;
+  } else if (cardType.value === 'Flat') {
+    return SlideoutPanelFlat;
   }
   // Default to Glass (or include additional logic for 'Flat')
   return SlideoutPanelGlass;
