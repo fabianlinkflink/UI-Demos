@@ -38,7 +38,6 @@
 const emit = defineEmits(['slideOutToggle']);
 
 const bgColor = 'rgb(194,207,179)';
-const lowerBgColor = 'rgb(214,227,199)';
 const toggleSlideout = () => {
   emit('slideOutToggle', toggleSlideout);
 }
