@@ -75,7 +75,7 @@
     </div>
 
     <!-- Subgroups -->
-    <transition name="expand" class="scale-90 origin-top-right mt-2">
+    <transition name="expand" class="scale-x-95 origin-top-right mt-2">
       <div v-if="isExpanded" class="w-full relative z-10">
         <NeoBrutCard
           v-for="(subgroup, index) in subgroup"

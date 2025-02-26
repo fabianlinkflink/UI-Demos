@@ -26,8 +26,7 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>  
-        <div class="absolute inset-0 pointer-events-none shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)]"></div>
+        </p>
       </div>
 
     </section>
