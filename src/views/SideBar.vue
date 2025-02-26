@@ -1,6 +1,6 @@
 <template>
   <div
-    class="sidebar-container relative h-screen w-screen bg-transparent overflow-hidden"
+    class="sidebar-container relative h-screen w-screen bg-transparent"
     style="height: calc(100vh - 4rem)"
   >
     <!-- Control Panel -->
@@ -36,6 +36,16 @@
         Flatcard
       </button>
       <button
+        @click="cardType = 'NeoBrut'"
+        :class="{
+          'bg-gray-700 text-white': cardType === 'NeoBrut',
+          'bg-white text-gray-700': cardType !== 'NeoBrut'
+        }"
+        class="px-3 py-1 rounded"
+      >
+        Neo Brutalism
+      </button>
+      <button
         @click="toggleSlideout"
         class="px-3 py-1 rounded bg-blue-500 text-white"
       >
@@ -44,45 +54,60 @@
     </div>
 
     <!-- Left-side cards overlay -->
-    <div
-      class="cards-container absolute left-0 top-14 bottom-0 w-80 overflow-y-scroll p-2"
-    >
-      <template v-for="(card, index) in cards" :key="index">
-        <!-- Switch rendering based on selected cardType -->
-        <GlassCard
-          v-if="cardType === 'Glass'"
-          :groupName="card.groupName"
-          :leftTitle="card.leftTitle"
-          :leftInfo="card.leftInfo"
-          :rightTitle="card.rightTitle"
-          :rightInfo="card.rightInfo"
-          :bgColor="card.bgColor"
-          :subgroup="card.subgroup"
-          class="mb-4"
-        />
-        <ColorfulCard
-          v-else-if="cardType === 'Colorful'"
-          :groupName="card.groupName"
-          :leftTitle="card.leftTitle"
-          :leftInfo="card.leftInfo"
-          :rightTitle="card.rightTitle"
-          :rightInfo="card.rightInfo"
-          :bgColor="card.bgColor"
-          :subgroup="card.subgroup"
-          class="mb-4"
-        />
-        <Flatcard
-          v-else-if="cardType === 'Flat'"
-          :groupName="card.groupName"
-          :leftTitle="card.leftTitle"
-          :leftInfo="card.leftInfo"
-          :rightTitle="card.rightTitle"
-          :rightInfo="card.rightInfo"
-          :bgColor="card.bgColor"
-          :subgroup="card.subgroup"
-        />
-      </template>
-  </div>
+    <div class="relative w-100 h-full">
+      <div
+        class="cards-container absolute left-0 top-14 bottom-0 w-full overflow-y-auto overflow-x-visible p-2"
+      >
+        <div class="relative">
+          <template v-for="(card, index) in cards" :key="index">
+            <!-- Switch rendering based on selected cardType -->
+            <GlassCard
+              v-if="cardType === 'Glass'"
+              :groupName="card.groupName"
+              :leftTitle="card.leftTitle"
+              :leftInfo="card.leftInfo"
+              :rightTitle="card.rightTitle"
+              :rightInfo="card.rightInfo"
+              :bgColor="card.bgColor"
+              :subgroup="card.subgroup"
+              class="mb-4"
+            />
+            <ColorfulCard
+              v-else-if="cardType === 'Colorful'"
+              :groupName="card.groupName"
+              :leftTitle="card.leftTitle"
+              :leftInfo="card.leftInfo"
+              :rightTitle="card.rightTitle"
+              :rightInfo="card.rightInfo"
+              :bgColor="card.bgColor"
+              :subgroup="card.subgroup"
+              class="mb-4"
+            />
+            <Flatcard
+              v-else-if="cardType === 'Flat'"
+              :groupName="card.groupName"
+              :leftTitle="card.leftTitle"
+              :leftInfo="card.leftInfo"
+              :rightTitle="card.rightTitle"
+              :rightInfo="card.rightInfo"
+              :bgColor="card.bgColor"
+              :subgroup="card.subgroup"
+            />
+            <NeoBrutCard
+              v-else-if="cardType === 'NeoBrut'"
+              :groupName="card.groupName"
+              :leftTitle="card.leftTitle"
+              :leftInfo="card.leftInfo"
+              :rightTitle="card.rightTitle"
+              :rightInfo="card.rightInfo"
+              :bgColor="card.bgColor"
+              :subgroup="card.subgroup"
+              class="mb-8 w-80"
+            />
+          </template>
+        </div>
+      </div>
+    </div>
     <transition name="slide">
       <component v-if="showSlideout" :is="currentSlideout" @slideOutToggle="toggleSlideout"/>
     </transition>
@@ -94,9 +119,13 @@ import { computed, ref } from 'vue';
 import GlassCard from '@/components/GlassCard.vue';
 import ColorfulCard from '@/components/ColorfulCard.vue';
 import Flatcard from '@/components/FlatCard.vue';
+import NeoBrutCard from '@/components/NeoBrutCard.vue';
+
 import SlideoutPanelGlass from '@/components/SlideoutPanelGlass.vue';
 import SlideoutPanelColorful from '@/components/SlideoutPanelColorful.vue';
 import SlideoutPanelFlat from '@/components/SlideoutPanelFlat.vue';
+import SlideoutPanelNeoBrut from '@/components/SlideoutPanelNeoBrut.vue';
+
 import groupData from '@/data/groupData';
 
 interface Card {
@@ -135,6 +164,8 @@ const currentSlideout = computed(() => {
     return SlideoutPanelColorful;
   } else if (cardType.value === 'Flat') {
     return SlideoutPanelFlat;
+  } else if (cardType.value === 'NeoBrut') {
+    return SlideoutPanelNeoBrut;
   }
   // Default to Glass (or include additional logic for 'Flat')
   return SlideoutPanelGlass;
@@ -147,12 +178,14 @@ const toggleSlideout = () => {
 
 <style scoped>
 .cards-container {
-  /* Hide scrollbar for IE, Firefox, Chrome, Safari */
-  -ms-overflow-style: none; /* IE 10+ */
-  scrollbar-width: none; /* Firefox */
+  /* Hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
+
 .cards-container::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
+  display: none;
 }
 
 /* Slideout transition styles */
