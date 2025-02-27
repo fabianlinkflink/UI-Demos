@@ -143,9 +143,9 @@ function mapGroup(group: any): Card {
   return {
     groupName: group.name,
     leftTitle: 'Material',
-    leftInfo: 'Mixed',
+    leftInfo: '1003 kgCo2',
     rightTitle: 'Included',
-    rightInfo: 'Yes',
+    rightInfo: '87%',
     bgColor: group.color ? group.color : 'bg-gray-800',
     subgroup: group.children ? group.children.map(mapGroup) : []
   }

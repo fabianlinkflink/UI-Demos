@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Mega&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
 @import "tailwindcss";
 
 @theme {
   --font-lexend: "Lexend Mega", sans-serif;
+  --font-number: "Major Mono Display", Mono;
+  --font-bread: "Merriweather", serif;
 }

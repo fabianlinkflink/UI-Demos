@@ -17,7 +17,7 @@
     <section 
       class="relative flex items-center justify-center min-w-full h-fit p-3 border-t-2 border-black bg-neutral-100 z-10 rounded-md"
     >
-      <div class="flex flex-col p-4 font-serif text-black text-left space-y-2">
+      <div class="flex flex-col p-4 font-bread text-black text-left space-y-2">
         <p>This is where content goes </p>
         <p>Could be material table </p>
         <p>Could be save form </p>

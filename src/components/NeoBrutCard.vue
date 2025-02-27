@@ -20,11 +20,11 @@
             <div class="flex justify-center text-xl leading-none font-black">{{ groupName }}</div>
           </div>
           <!-- Left Side Info -->
-          <div class="flex flex-col items-start h-full pl-3 pt-8 pb-4">
+          <div class="flex flex-col items-start h-full pl-3 pt-8 pb-4 font-mono">
             <div class="text-l leading-none pt-2">{{ leftInfo }}</div>
           </div>
           <!-- Right Side Info -->
-          <div class="flex flex-col items-end h-full pr-3 pt-8 pb-4">
+          <div class="flex flex-col items-end h-full pr-3 pt-8 pb-4 font-mono">
             <div>
               <div class="text-l leading-none pt-2">{{ rightInfo }}</div>
             </div>
